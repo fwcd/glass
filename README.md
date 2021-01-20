@@ -11,8 +11,7 @@ To use, create a `config.json` with the following contents:
     "accounts": [
         {
             "type": "github",
-            "username": "<your username>",
-            "password": "<your personal access token>",
+            "token": "<your personal access token>",
             "targetDir": "<path/to/where/the/repos/should/be/placed>"
         }
     ]
