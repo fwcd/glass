@@ -10,6 +10,7 @@ To use, create a `config.json` with the following contents:
 {
     "accounts": [
         {
+            "description: "My fancy GitHub account",
             "type": "github",
             "username": "<your username>",
             "token": "<your personal access token>",

@@ -5,7 +5,7 @@ from glass.hoster.github import GitHubHoster
 from glass.mirror import mirror_repo
 
 HOSTERS = {
-    'github': GitHubHoster()
+    'github': lambda acc: GitHubHoster(acc['username'], acc['token'])
 }
 
 def main():
@@ -17,10 +17,12 @@ def main():
         config = json.loads(f.read())
     
     for account in config['accounts']:
-        hoster = HOSTERS[account['type']]
+        hoster = HOSTERS[account['type']](account)
         if hoster:
-            for url in hoster.repositories():
-                mirror_repo(url, account['target_dir'])
+            repo_urls = hoster.repositories()
+            print(f"Found {len(repo_urls)} repo(s) on {account['description']}...")
+            for url in repo_urls:
+                mirror_repo(url, account['targetDir'])
         else:
             raise ValueError(f"Unknown account type {account['type']}")
 
