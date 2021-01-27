@@ -1,11 +1,13 @@
 import argparse
 import json
 
+from glass.hoster.git import SingleRepoGitHoster
 from glass.hoster.github import GitHubHoster
 from glass.mirror import mirror_repo
 
 HOSTERS = {
-    'github': lambda acc: GitHubHoster(acc['username'], acc['token'])
+    'github': lambda acc: GitHubHoster(acc['username'], acc['token']),
+    'git': lambda _: SingleRepoGitHoster()
 }
 
 def main():
