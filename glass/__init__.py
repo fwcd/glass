@@ -5,11 +5,13 @@ from pathlib import Path
 
 from glass.hoster.git import SingleRepoGitHoster
 from glass.hoster.github import GitHubHoster
+from glass.hoster.gitlab import GitLabHoster
 from glass.mirror import mirror_repo
 
 DEFAULT_CONFIG_PATH = Path.home() / '.config' / 'glass' / 'config.json'
 HOSTERS = {
-    'github': lambda acc: GitHubHoster(acc['username'], acc['token']),
+    'github': lambda acc: GitHubHoster(acc['token']),
+    'gitlab': lambda acc: GitLabHoster(acc['url'], acc['token']),
     'git': lambda _: SingleRepoGitHoster()
 }
 
