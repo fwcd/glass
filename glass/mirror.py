@@ -3,8 +3,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 
 def mirror_repo(repo_url, target_dir):
-    target_dir.mkdir(parents=True, exist_ok=True)
     repo_dir = Path(str(target_dir) + urlparse(repo_url).path)
+    repo_dir.parent.mkdir(parents=True, exist_ok=True)
 
     if repo_dir.exists():
         print(f'Updating from {repo_url}...')
