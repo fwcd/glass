@@ -1,12 +1,12 @@
 # Glass
 
-A tool that mirrors repositories from your online Git hosting accounts.
+A tool that mirrors repositories from your online Git hosting accounts, including from GitHub, GitLab and Gitea.
 
 ## Usage
 
 To use, create a `config.json` using any combination of the listed account types:
 
-```
+```json
 {
     "targetDir": "<path/to/your/local/mirroring/folder>",
     "accounts": [
@@ -20,6 +20,12 @@ To use, create a `config.json` using any combination of the listed account types
             "type": "gitlab",
             "url": "<https://your.gitlab>",
             "token": "<your personal access token>"
+        },
+        {
+            "description": "your-gitea",
+            "type": "gitea",
+            "url": "<https://your.gitea>",
+            "token": "<your personal access token>",
         },
         {
             "description": "a-single-repo",
@@ -43,6 +49,10 @@ targetDir
 │ ├ your-account
 │ │ ├ repo1.git   <- https://your.gitlab/your-account/repo1.git
 │ │ ├ repo2.git   <- https://your.gitlab/your-account/repo2.git
+├ your-gitea
+│ ├ your-account
+│ │ ├ repo1.git   <- https://your.gitea/your-account/repo1.git
+│ │ ├ repo2.git   <- https://your.gitea/your-account/repo2.git
 │ ...
 ├ a-single-repo
 │ └ repo.git      <- https://your.host/repo.git
