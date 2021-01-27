@@ -21,7 +21,7 @@ def main():
     with open(args.config, 'r') as f:
         config = json.loads(f.read())
     
-    target_dir = config['targetDir']
+    target_dir = Path(config['targetDir'])
     accounts = config['accounts']
 
     for account in accounts:
@@ -35,7 +35,7 @@ def main():
             print(f"Found {len(repo_urls)} repo(s) on {acc_desc}...")
 
             for url in repo_urls:
-                mirror_repo(url, os.path.join(target_dir, acc_desc))
+                mirror_repo(url, target_dir / acc_desc)
         else:
             raise ValueError(f"Unknown account type '{acc_type}'")
 
