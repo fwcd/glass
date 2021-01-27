@@ -38,7 +38,7 @@ targetDir
 │ ├ your-account
 │ │ ├ repo1.git   <- https://github.com/your-account/repo1.git
 │ │ ├ repo2.git   <- https://github.com/your-account/repo2.git
-│   ...
+│ ...
 ├ your-gitlab
 │ ├ your-account
 │ │ ├ repo1.git   <- https://your.gitlab/your-account/repo1.git
