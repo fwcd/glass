@@ -25,7 +25,7 @@ To use, create a `config.json` using any combination of the listed account types
             "description": "your-gitea",
             "type": "gitea",
             "url": "<https://your.gitea>",
-            "token": "<your personal access token>",
+            "token": "<your personal access token>"
         },
         {
             "description": "a-single-repo",
