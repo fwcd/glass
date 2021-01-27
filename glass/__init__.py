@@ -31,9 +31,9 @@ def main():
     for account in accounts:
         acc_type = account['type']
         acc_desc = account['description']
-        hoster = HOSTERS[acc_type](account)
 
-        if hoster:
+        if acc_type in HOSTERS:
+            hoster = HOSTERS[acc_type](account)
             print(f"Querying {acc_desc}...")
             repo_urls = hoster.repositories()
             print(f"Found {len(repo_urls)} repo(s) on {acc_desc}...")
