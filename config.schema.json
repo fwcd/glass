@@ -1,0 +1,121 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema",
+  "title": "Glass configuration",
+  "type": "object",
+  "description": "The configuration for Glass.",
+  "definitions": {
+    "account": {
+      "description": "A Git hosting account to mirror.",
+      "allOf": [
+        {
+          "type": "object",
+          "properties": {
+            "description": {
+              "type": "string",
+              "description": "A custom name for this account, used to name the directory (not a username or anything though)."
+            },
+            "type": {
+              "type": "string",
+              "enum": ["github", "gitlab", "gitea", "git"],
+              "description": "The type of account to mirror."
+            }
+          },
+          "required": ["description", "type"]
+        },
+        {
+          "oneOf": [
+            { "$ref": "#/definitions/github-account" },
+            { "$ref": "#/definitions/gitlab-account" },
+            { "$ref": "#/definitions/gitea-account" },
+            { "$ref": "#/definitions/git-account" }
+          ]
+        }
+      ]
+    },
+    "github-account": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "github"
+        },
+        "token": {
+          "type": "string",
+          "description": "Your personal access token"
+        }
+      },
+      "required": ["type", "token"]
+    },
+    "gitlab-account": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "gitlab"
+        },
+        "token": {
+          "type": "string",
+          "description": "Your personal access token"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL to your GitLab instance",
+          "examples": [
+            "https://gitlab.com"
+          ]
+        }
+      },
+      "required": ["type", "token", "url"]
+    },
+    "gitea-account": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "gitea"
+        },
+        "token": {
+          "type": "string",
+          "description": "Your personal access token"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The URL to your Gitea instance",
+          "examples": [
+            "https://gitea.com"
+          ]
+        }
+      },
+      "required": ["type", "token", "url"]
+    },
+    "git-account": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "const": "git"
+        },
+        "url": {
+          "type": "string",
+          "format": "uri",
+          "description": "The clone URL to your Git repo.",
+          "examples": [
+            "https://your.host/repo.git"
+          ]
+        }
+      }
+    }
+  },
+  "properties": {
+    "targetDir": {
+      "type": "string",
+      "description": "The file path to the root directory used by glass. Each account will have a subdirectory under which mirrored repositories will be placed."
+    },
+    "accounts": {
+      "type": "array",
+      "description": "The Git hosting accounts to mirror.",
+      "items": {
+        "$ref": "#/definitions/account"
+      }
+    }
+  },
+  "required": ["targetDir"]
+}
