@@ -1,9 +1,9 @@
 from glass.hoster import GitHoster
 
 class SingleRepoGitHoster(GitHoster):
-    def __init__(self, url):
+    def __init__(self, url: str):
         self.url = url
 
-    def repositories(self):
-        return [url]
+    def repositories(self) -> list[str]:
+        return [self.url]
 

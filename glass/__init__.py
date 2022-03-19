@@ -2,6 +2,7 @@ import argparse
 import json
 from pathlib import Path
 
+from glass.hoster import GitHoster
 from glass.hoster.git import SingleRepoGitHoster
 from glass.hoster.github import GitHubHoster
 from glass.hoster.gitlab import GitLabHoster
@@ -22,17 +23,17 @@ def main():
 
     args = parser.parse_args()
     with open(args.config, 'r') as f:
-        config = json.loads(f.read())
+        config: dict = json.loads(f.read())
     
     target_dir = Path(config['targetDir'])
-    accounts = config['accounts']
+    accounts = config.get('accounts', [])
 
     for account in accounts:
         acc_type = account['type']
         acc_name = account['name']
 
         if acc_type in HOSTERS:
-            hoster = HOSTERS[acc_type](account)
+            hoster: GitHoster = HOSTERS[acc_type](account)
             print(f"Querying {acc_name}...")
             repo_urls = hoster.repositories()
             print(f"Found {len(repo_urls)} repo(s) on {acc_name}...")
