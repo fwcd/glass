@@ -8,31 +8,31 @@ To use, create a `config.json` using any combination of the listed account types
 
 ```json
 {
-    "targetDir": "<path/to/your/local/mirroring/folder>",
-    "accounts": [
-        {
-            "description": "your-github",
-            "type": "github",
-            "token": "<your personal access token>"
-        },
-        {
-            "description": "your-gitlab",
-            "type": "gitlab",
-            "url": "<https://your.gitlab>",
-            "token": "<your personal access token>"
-        },
-        {
-            "description": "your-gitea",
-            "type": "gitea",
-            "url": "<https://your.gitea>",
-            "token": "<your personal access token>"
-        },
-        {
-            "description": "a-single-repo",
-            "type": "git",
-            "url": "<https://your.host/repo.git>"
-        }
-    ]
+  "targetDir": "<path/to/your/local/mirroring/folder>",
+  "accounts": [
+    {
+      "description": "your-github",
+      "type": "github",
+      "token": "<your personal access token>"
+    },
+    {
+      "description": "your-gitlab",
+      "type": "gitlab",
+      "url": "<https://your.gitlab>",
+      "token": "<your personal access token>"
+    },
+    {
+      "description": "your-gitea",
+      "type": "gitea",
+      "url": "<https://your.gitea>",
+      "token": "<your personal access token>"
+    },
+    {
+      "description": "a-single-repo",
+      "type": "git",
+      "url": "<https://your.host/repo.git>"
+    }
+  ]
 }
 ```
 
