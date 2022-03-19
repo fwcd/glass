@@ -10,7 +10,7 @@
         {
           "type": "object",
           "properties": {
-            "description": {
+            "name": {
               "type": "string",
               "description": "A custom name for this account, used to name the directory (not a username or anything though)."
             },
@@ -20,7 +20,7 @@
               "description": "The type of account to mirror."
             }
           },
-          "required": ["description", "type"]
+          "required": ["name", "type"]
         },
         {
           "oneOf": [

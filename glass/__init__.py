@@ -30,16 +30,16 @@ def main():
 
     for account in accounts:
         acc_type = account['type']
-        acc_desc = account['description']
+        acc_name = account['name']
 
         if acc_type in HOSTERS:
             hoster = HOSTERS[acc_type](account)
-            print(f"Querying {acc_desc}...")
+            print(f"Querying {acc_name}...")
             repo_urls = hoster.repositories()
-            print(f"Found {len(repo_urls)} repo(s) on {acc_desc}...")
+            print(f"Found {len(repo_urls)} repo(s) on {acc_name}...")
 
             for url in repo_urls:
-                mirror_repo(url, target_dir / acc_desc)
+                mirror_repo(url, target_dir / acc_name)
         else:
             raise ValueError(f"Unknown account type '{acc_type}'")
 

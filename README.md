@@ -11,24 +11,24 @@ To use, create a `config.json` using any combination of the listed account types
   "targetDir": "<path/to/your/local/mirroring/folder>",
   "accounts": [
     {
-      "description": "your-github",
+      "name": "your-github",
       "type": "github",
       "token": "<your personal access token>"
     },
     {
-      "description": "your-gitlab",
+      "name": "your-gitlab",
       "type": "gitlab",
       "url": "<https://your.gitlab>",
       "token": "<your personal access token>"
     },
     {
-      "description": "your-gitea",
+      "name": "your-gitea",
       "type": "gitea",
       "url": "<https://your.gitea>",
       "token": "<your personal access token>"
     },
     {
-      "description": "a-single-repo",
+      "name": "a-single-repo",
       "type": "git",
       "url": "<https://your.host/repo.git>"
     }
