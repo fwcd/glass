@@ -1,5 +1,7 @@
 # Glass
 
+[![Typecheck](https://github.com/fwcd/glass/actions/workflows/typecheck.yml/badge.svg)](https://github.com/fwcd/glass/actions/workflows/typecheck.yml)
+
 A tool that mirrors repositories from your online Git hosting accounts, including from GitHub, GitLab and Gitea.
 
 ## Usage
