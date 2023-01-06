@@ -1,9 +1,12 @@
-import gitea
+# type: ignore
+
+from gitea import Gitea
+
 from glass.hoster import GitHoster
 
 class GiteaHoster(GitHoster):
     def __init__(self, url: str, token: str):
-        self.gt = gitea.Gitea(url, token)
+        self.gt = Gitea(url, token)
     
     def repositories(self) -> list[str]:
         return [
