@@ -8,6 +8,7 @@ def mirror_repo(repo_url: str, target_dir: Path):
 
     if repo_dir.exists():
         print(f'Updating from {repo_url}...')
+        subprocess.run(['git', 'remote', 'set-url', 'origin', repo_url], cwd=str(repo_dir), check=True)
         subprocess.run(['git', 'remote', 'update'], cwd=str(repo_dir), check=True)
     else:
         print(f'Mirroring from {repo_url}...')
