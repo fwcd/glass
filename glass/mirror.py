@@ -2,7 +2,7 @@ import subprocess
 from pathlib import Path
 from urllib.parse import urlparse
 
-def mirror_repo(repo_url, target_dir):
+def mirror_repo(repo_url: str, target_dir: Path):
     repo_dir = Path(str(target_dir) + urlparse(repo_url).path)
     repo_dir.parent.mkdir(parents=True, exist_ok=True)
 
