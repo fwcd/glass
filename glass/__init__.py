@@ -1,5 +1,6 @@
 import argparse
 import json
+import os
 
 from pathlib import Path
 from typing import Callable, Any
@@ -11,9 +12,15 @@ from glass.hoster.gitlab import GitLabHoster
 from glass.hoster.gitea import GiteaHoster
 from glass.mirror import mirror_repo
 
+def get_token(hoster: str) -> str:
+    if os.getenv("CREDENTIALS_DIRECTORY"):
+        cred_path = Path(os.getenv("CREDENTIALS_DIRECTORY")) / hoster
+        if cred_path.exists():
+            return cred_path.read_text().strip()
+
 DEFAULT_CONFIG_PATH = Path.home() / '.config' / 'glass' / 'config.json'
 HOSTERS: dict[str, Callable[[dict[str, Any]], GitHoster]] = {
-    'github': lambda acc: GitHubHoster(acc['token']),
+    'github': lambda acc: GitHubHoster(acc.get('token') or get_token("github")),
     'gitlab': lambda acc: GitLabHoster(acc['url'], acc['token']),
     'gitea': lambda acc: GiteaHoster(acc['url'], acc['token']),
     'git': lambda acc: SingleRepoGitHoster(acc['url'])
